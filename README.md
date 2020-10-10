@@ -1,3 +1,12 @@
+
+
+## How to Launch
+
+1. Execute ./run-hsqldb-server.sh to start the DB
+2. Execute ./show-hsqldb.sh
+3. Run RestServer.java in Eclipse
+4. Enter desired url into Browser bar
+
 ## What Works ?
 
 This git repository is for questions 6 through 8 of TP2 in TAA class.
@@ -16,4 +25,3 @@ URI examples:
 - GET: http://localhost:8080/fiche/1 gets the card with an id of 1
 - PUT: http://localhost:8080/fiche/1/addtag/3 adds the tag with id=3 to the card with id=1
 - DELETE: http://localhost:8080/user/delete/10 deletes user with id=10
-
