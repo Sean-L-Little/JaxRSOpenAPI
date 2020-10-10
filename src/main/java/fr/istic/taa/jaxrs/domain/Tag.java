@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @XmlRootElement(name = "Tag")
 public class Tag implements Serializable{
@@ -40,7 +42,7 @@ public class Tag implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	@XmlElement(name = "tag_name")
 	public String getTag_name() {
 		return tag_name;
 	}
@@ -49,6 +51,7 @@ public class Tag implements Serializable{
 		this.tag_name = tag_name;
 	}
 	@ManyToMany(mappedBy="tags",cascade=CascadeType.PERSIST)
+	@JsonIgnore
 	public List<Fiche> getFiches() {
 		return fiches;
 	}

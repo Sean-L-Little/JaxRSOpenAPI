@@ -11,10 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@XmlRootElement(name = "Section")
 public class Section implements Serializable{
 	
 	private Long id;
@@ -35,6 +38,7 @@ public class Section implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@XmlElement(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -43,7 +47,7 @@ public class Section implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	@XmlElement(name = "section_name")
 	public String getSection_name() {
 		return section_name;
 	}
@@ -61,6 +65,7 @@ public class Section implements Serializable{
 	}
 	
 	@ManyToOne( cascade = CascadeType.ALL)
+	@XmlElement(name = "tableau")
 	public Tableau getTableau() {
 		return tableau;
 	}

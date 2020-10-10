@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@XmlRootElement(name = "User")
+@XmlRootElement(name = "Tableau")
 public class Tableau implements Serializable {
 	
 	private Long id;

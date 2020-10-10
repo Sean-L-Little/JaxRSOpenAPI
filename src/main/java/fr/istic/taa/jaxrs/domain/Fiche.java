@@ -145,7 +145,10 @@ public class Fiche  implements Serializable{
 
 
 	public void addTag(Tag tag) {
-		this.tags.add(tag);
+		if(!this.tags.contains(tag)) {
+			this.tags.add(tag);
+		}
+		
 	}
 	@Override
 	public String toString() {

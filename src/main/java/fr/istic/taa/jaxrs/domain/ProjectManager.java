@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
 
 @Entity@DiscriminatorValue("MANAGER")
 public class ProjectManager extends User implements Serializable{
@@ -24,6 +25,7 @@ public class ProjectManager extends User implements Serializable{
 		super(name);
 		this.teamName=teamName;
 	}
+	@XmlElement(name = "teamName")
 	public String getTeamName() {
 		return teamName;
 	}

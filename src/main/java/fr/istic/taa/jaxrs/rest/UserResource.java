@@ -11,7 +11,9 @@ import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.UserDAO;
 import fr.istic.taa.jaxrs.domain.User;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @Path("/user")
 @Produces({"application/json", "application/xml"})
@@ -20,6 +22,11 @@ public class UserResource {
 	
    @GET
    @Path("/{userid}")
+   @Operation(summary = "Get User by ID",
+   tags = {"user"},
+   responses = {
+         @ApiResponse(responseCode = "405", description = "Invalid input")
+   })
    public Response getUserById(@PathParam("userid") Long userid) {
         User user = dao.findOne(Long.valueOf(userid));
         return Response.status(200).entity(user).build();
@@ -28,6 +35,12 @@ public class UserResource {
 
    @GET
    @Path("/all")
+   
+   @Operation(summary = "Get All users by ID",
+   tags = {"user"},
+   responses = {
+         @ApiResponse(responseCode = "405", description = "Invalid input")
+   })
    public Response getAllUser() {
        return Response.status(200).entity(dao.findAll()).build();
    }
@@ -36,14 +49,25 @@ public class UserResource {
    @Path("/add")
    @Consumes("application/json")
    @Produces("text/html")
-   public Response addUser(User user) {
+   @Operation(summary = "Add User to DB",
+   tags = {"user"},
+		   responses = {
+		           @ApiResponse(responseCode = "405", description = "Validation exception")
+		   })
+   public Response addUser(
+		   @Parameter(description = "User to Add", required = true) User user) {
        dao.save(user);
        return Response.ok().entity("SUCCESS").build();
    }
 
    @DELETE
    @Path("/delete/{userid}")
-   public Response deleteTag(@PathParam("userid") int userid) {
+   @Operation(summary = "Delete user from DB",
+   tags = {"user"},
+		   responses = {
+		           @ApiResponse(responseCode = "405", description = "Validation exception")
+		   })
+   public Response deleteUser(@PathParam("userid") int userid) {
 
        dao.delete(dao.findOne(Long.valueOf(userid)));
        return Response.ok().entity("SUCCESS").build();
