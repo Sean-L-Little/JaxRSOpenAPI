@@ -59,6 +59,7 @@ public class Tableau implements Serializable {
 	
 	public void addSection(Section section) {
 		this.sections.add(section);
+		section.setTableau(this);
 	}
 	
 	

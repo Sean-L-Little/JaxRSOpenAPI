@@ -43,6 +43,10 @@ public class Fiche  implements Serializable{
 		this.lieu = "home";
 		this.url = "www.blabla.com";
 		this.section=section;
+		
+		
+		user.addFiche(this);
+		section.addFiche(this);
 	}
 	
 	public Fiche(String libelle, Date date_buttoir, User user, int temps_requis_m, List<Tag> tags,

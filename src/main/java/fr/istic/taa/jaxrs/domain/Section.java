@@ -34,6 +34,7 @@ public class Section implements Serializable{
 		super();
 		this.section_name = section_name;
 		this.tableau=tab;
+		tab.addSection(this);
 	}
 	
 	@Id
@@ -63,6 +64,12 @@ public class Section implements Serializable{
 	public void setFiches(List<Fiche> fiches) {
 		this.fiches = fiches;
 	}
+	
+	public void addFiche(Fiche fiche) {
+		this.fiches.add(fiche);
+		fiche.setSection(this);
+	}
+	
 	
 	@ManyToOne( cascade = CascadeType.ALL)
 	@XmlElement(name = "tableau")

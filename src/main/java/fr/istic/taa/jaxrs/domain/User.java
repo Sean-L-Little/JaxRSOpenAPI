@@ -73,6 +73,7 @@ public class User  implements Serializable{
 	public void addFiche(Fiche fiche) {
 
 		this.fiches.add(fiche);
+		fiche.setUser(this);
 	}
 	
 	
